@@ -1,6 +1,10 @@
 # Exploiting Aliasing for Manga Restoration
 ### [CVPR Paper](https://openaccess.thecvf.com/content/CVPR2021/html/Xie_Exploiting_Aliasing_for_Manga_Restoration_CVPR_2021_paper.html) | [Arxiv](https://arxiv.org/abs/2105.06830) | [Project Website](http://www.cse.cuhk.edu.hk/~ttwong/papers/mangarestore/mangarestore.html) | [BibTex](#citation) 
 
+## NOTE
+This is a modified version made by me, bycloud. Please refer the original author [here](https://github.com/msxie92/MangaRestoration) for credit.
+
+
 <!-- ------------------------------------------------------------------------------ -->
 ## Introduction 
 As a popular entertainment art form, manga enriches the line drawings details with bitonal screentones. However, manga resources over the Internet usually show screentone artifacts because of inappropriate scanning/rescaling resolution. In this paper, we propose an innovative two-stage method to restore quality bitonal manga from degraded ones. Our key observation is that the aliasing induced by downsampling bitonal screentones can be utilized as informative clues to infer the original resolution and screentones. First, we predict the target resolution from the degraded manga via the Scale Estimation Network (SE-Net) with spatial voting scheme. Then, at the target resolution, we restore the region-wise bitonal screentones via the Manga Restoration Network (MR-Net) discriminatively, depending on the degradation degree. Specifically, the original screentones are directly restored in pattern-identifiable regions, and visually plausible screentones are synthesized in pattern-agnostic regions. Quantitative evaluation on synthetic data and visual assessment on real-world cases illustrate the effectiveness of our method.
@@ -12,33 +16,62 @@ Belows shows an example of our restored manga image. The image comes from the [M
 ![Degraded](examples/Akuhamu_020.jpg)
 ![Restored](examples/Akuhamu_020_SR.png)
 
+<!-- -------------------------------------------------------- -->
+# Setup
+<!-- -------------------------------------------------------- -->
+## Start
+Clone this repository and place it anywhere you want on your PC.
+
 <!-- ------------------------------------------------------------------- -->
 ## Pretrained models
-Download the models below and put it under `release_model/`.
+Download the models below and create a folder called `release_model/` and put it under there.
 
 [MangaRestoration](https://drive.google.com/file/d/1sazt7jlvfR6KEjOp9Tq2GpjMe04uRgtn/view?usp=sharing) 
 
 <!-- -------------------------------------------------------- -->
-## Run 
-1. Requirements:
-    * Install python3.6
-    * Install [pytorch](https://pytorch.org/) (tested on Release 1.1.0)
-    * Install python requirements:
-    ```bash
-       pip install -r requirements.txt
-    ```
-2. Testing:
-    * Place your test images under [datazip/manga1/test](datazip/manga1/test).
+## Setup environment
+We are going to use Anaconda3, download [Anaconda3](https://www.anaconda.com/products/individual) if you don't have it.  
 
-    * Prepare images filelist using [flist.py](scripts/flist.py).
-    * Run `python scripts/flist.py --path path_to_test_set --output path_to_test_flist `. 
-    * For example, `python scripts/flist.py --path datazip/manga1/test --output flist/manga1/test.flist `
+- Create conda environment:
+```
+conda create -n EAMR python=3.6
+conda activate EAMR
+```
+- Setup conda env for nvidia non-30 series GPU:
+```
+conda install pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch
+```
+- Setup conda env for nvidia 30 series GPU:
+```
+conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch
+```
+- Install the dependencies
+```
+cd WHERE_YOU_CLONED_THIS_REPO
+pip install -r requirements.txt
+```
+- *To reuse the created conda environment after you close the prompt, you just need to*:
+```
+conda activate EAMR
+```
+<!-- -------------------------------------------------------- -->
+## Testing
+ 1. Create folder `datazip/manga1/test/` and `flist/manga1/`
+ 2. Place your test images under `datazip/manga1/test/`
+ 3. Run:
+```
+python scripts/flist.py --path datazip/manga1/test --output flist/manga1/test.flist
+```
+This generates a `test.flist` for your test images
 
-    * Modify [manga.json](configs/manga.json) to set path to data.
-    * Run `python testreal.py -c [config_file] -n [model_name] -s [image_size] `. 
-    * For example, `python testreal.py -c configs/manga.json -n resattencv -s 256 `
-    * Note that the Convex interpolation refinement requires large GPU memory, you can enable it by setting (bilinear=False) in MangaRestorator to restore images. Defaultly, we set bilinear=True.
-    * You can also use `python testreal.py -c [config_file] -n [model_name] -s [image_size] -sl [scale]` to specify the scale factor. 
+ 4. Run:
+```
+python testreal.py -c configs/manga.json -n resattencv -s 256
+```
+and your results will be under `MangaRestoration\release_model\resattencv_manga_cons256\results_real_00400\`
+
+
+
 
 ## Copyright and License
 You are granted with the [LICENSE](./LICENSE) for both academic and commercial usages.
