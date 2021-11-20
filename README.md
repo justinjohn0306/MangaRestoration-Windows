@@ -12,6 +12,7 @@ Belows shows an example of our restored manga image. The image comes from the [M
 <!-- -------------------------------------------------------- -->
 
 # Setup
+You can refer to this [video tutorial]() along side too.
 <!-- -------------------------------------------------------- -->
 ## Start
 Clone this repository and place it anywhere you want on your PC.
