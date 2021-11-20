@@ -4,18 +4,6 @@
 ## NOTE
 This is a modified version made by me, bycloud. Please refer the original author [here](https://github.com/msxie92/MangaRestoration) for credit.
 
-
-<!-- ------------------------------------------------------------------------------ -->
-## Introduction 
-As a popular entertainment art form, manga enriches the line drawings details with bitonal screentones. However, manga resources over the Internet usually show screentone artifacts because of inappropriate scanning/rescaling resolution. In this paper, we propose an innovative two-stage method to restore quality bitonal manga from degraded ones. Our key observation is that the aliasing induced by downsampling bitonal screentones can be utilized as informative clues to infer the original resolution and screentones. First, we predict the target resolution from the degraded manga via the Scale Estimation Network (SE-Net) with spatial voting scheme. Then, at the target resolution, we restore the region-wise bitonal screentones via the Manga Restoration Network (MR-Net) discriminatively, depending on the degradation degree. Specifically, the original screentones are directly restored in pattern-identifiable regions, and visually plausible screentones are synthesized in pattern-agnostic regions. Quantitative evaluation on synthetic data and visual assessment on real-world cases illustrate the effectiveness of our method.
-
-<!-- ------------------------------------------------------------------------------ -->
-## Example Results 
-Belows shows an example of our restored manga image. The image comes from the [Manga109 dataset](http://www.manga109.org/en/).
-
-![Degraded](examples/Akuhamu_020.jpg)
-![Restored](examples/Akuhamu_020_SR.png)
-
 <!-- -------------------------------------------------------- -->
 # Setup
 <!-- -------------------------------------------------------- -->
@@ -70,7 +58,16 @@ python testreal.py -c configs/manga.json -n resattencv -s 256
 ```
 and your results will be under `MangaRestoration\release_model\resattencv_manga_cons256\results_real_00400\`
 
+<!-- ------------------------------------------------------------------------------ -->
+## Introduction 
+As a popular entertainment art form, manga enriches the line drawings details with bitonal screentones. However, manga resources over the Internet usually show screentone artifacts because of inappropriate scanning/rescaling resolution. In this paper, we propose an innovative two-stage method to restore quality bitonal manga from degraded ones. Our key observation is that the aliasing induced by downsampling bitonal screentones can be utilized as informative clues to infer the original resolution and screentones. First, we predict the target resolution from the degraded manga via the Scale Estimation Network (SE-Net) with spatial voting scheme. Then, at the target resolution, we restore the region-wise bitonal screentones via the Manga Restoration Network (MR-Net) discriminatively, depending on the degradation degree. Specifically, the original screentones are directly restored in pattern-identifiable regions, and visually plausible screentones are synthesized in pattern-agnostic regions. Quantitative evaluation on synthetic data and visual assessment on real-world cases illustrate the effectiveness of our method.
 
+<!-- ------------------------------------------------------------------------------ -->
+## Example Results 
+Belows shows an example of our restored manga image. The image comes from the [Manga109 dataset](http://www.manga109.org/en/).
+
+![Degraded](examples/Akuhamu_020.jpg)
+![Restored](examples/Akuhamu_020_SR.png)
 
 
 ## Copyright and License
