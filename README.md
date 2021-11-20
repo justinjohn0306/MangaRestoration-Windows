@@ -27,20 +27,20 @@ Download the models below and create a folder called `release_model/` and put it
 ## Setup environment
 We are going to use Anaconda3, download [Anaconda3](https://www.anaconda.com/products/individual) if you don't have it.  
 
-- Create conda environment:
+1. Create conda environment:
 ```
 conda create -n EAMR python=3.6
 conda activate EAMR
 ```
-- Setup conda env for nvidia non-30 series GPU:
+2. Setup conda env for nvidia non-30 series GPU:
 ```
 conda install pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch
 ```
-- Setup conda env for nvidia 30 series GPU:
+3. Setup conda env for nvidia 30 series GPU:
 ```
 conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch
 ```
-- Install the dependencies
+4. Install the dependencies
 ```
 cd WHERE_YOU_CLONED_THIS_REPO
 pip install -r requirements.txt
