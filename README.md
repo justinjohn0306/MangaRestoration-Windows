@@ -32,15 +32,19 @@ We are going to use Anaconda3, download [Anaconda3](https://www.anaconda.com/pro
 conda create -n EAMR python=3.6
 conda activate EAMR
 ```
-2. Setup conda env for nvidia non-30 series GPU:
+2-1. Setup conda env for nvidia non-30 series GPU:
 ```
 conda install pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch
 ```
-3. Setup conda env for nvidia 30 series GPU:
+2-2. Setup conda env for nvidia 30 series GPU:
 ```
 conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch
 ```
-4. Install the dependencies
+2-3. Setup conda env for non-nvidia GPU:
+```
+conda install pytorch torchvision torchaudio cpuonly -c pytorch
+```
+3. Install the dependencies
 ```
 cd WHERE_YOU_CLONED_THIS_REPO
 pip install -r requirements.txt
