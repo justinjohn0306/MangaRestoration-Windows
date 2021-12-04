@@ -12,6 +12,7 @@ Belows shows an example of our restored manga image. The image comes from the [M
 <!-- -------------------------------------------------------- -->
 
 # Setup
+Follow this [video](https://youtu.be/uCTa4NUSwBs) tutorial to follow the installation process easily.
 
 <!-- -------------------------------------------------------- -->
 ## Start
