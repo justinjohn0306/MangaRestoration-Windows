@@ -1,3 +1,9 @@
+--extra-index-url https://download.pytorch.org/whl/cu113
+
+torch==1.12.1+cu113; sys_platform != 'darwin'
+torch==1.12.1; sys_platform == 'darwin'
+torchvision==0.13.1+cu113; sys_platform != 'darwin'
+torchvision==0.13.1; sys_platform == 'darwin
 numpy==1.19.2
 matplotlib==3.3.4
 pillow==8.3.1
