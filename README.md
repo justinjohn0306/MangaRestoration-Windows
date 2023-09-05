@@ -33,7 +33,6 @@ We are going to use Anaconda3, download [Anaconda3](https://www.anaconda.com/pro
 conda create -n EAMR python=3.8
 conda activate EAMR
 ```
-```
 2. Install the dependencies
 ```
 cd WHERE_YOU_CLONED_THIS_REPO
