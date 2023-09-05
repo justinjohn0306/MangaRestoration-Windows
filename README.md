@@ -30,22 +30,11 @@ We are going to use Anaconda3, download [Anaconda3](https://www.anaconda.com/pro
 
 1. Create conda environment:
 ```
-conda create -n EAMR python=3.6
+conda create -n EAMR python=3.8
 conda activate EAMR
 ```
-2-1. Setup conda env for nvidia non-30 series GPU:
 ```
-conda install pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch
-```
-2-2. Setup conda env for nvidia 30 series GPU:
-```
-conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch
-```
-2-3. Setup conda env for non-nvidia GPU:
-```
-conda install pytorch torchvision torchaudio cpuonly -c pytorch
-```
-3. Install the dependencies
+2. Install the dependencies
 ```
 cd WHERE_YOU_CLONED_THIS_REPO
 pip install -r requirements.txt
@@ -64,9 +53,13 @@ python scripts/flist.py --path datazip/manga1/test --output flist/manga1/test.fl
 ```
 This generates a `test.flist` for your test images
 
- 4. Run:
+ 4. Run: GPU inference
 ```
-python testreal.py -c configs/manga.json -n resattencv -s 256
+python testreal.py -c configs/manga.json -n resattencv -s 256 -d gpu
+```
+4.1 Run: CPU inference
+```
+python testreal.py -c configs/manga.json -n resattencv -s 256 -d cpu
 ```
 and your results will be under `MangaRestoration\release_model\resattencv_manga_cons256\results_real_00400\`
 
